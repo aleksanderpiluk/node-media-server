@@ -1,0 +1,1 @@
+export type ImageVariantFit = 'cover' | 'contain' | 'fill' | 'inside' | 'outside';

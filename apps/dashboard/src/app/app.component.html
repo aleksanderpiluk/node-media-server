@@ -1,0 +1,61 @@
+<div class="container-fluid g-0 bg-body ps-md-sbwidth">
+  <div class="container-fluid h-100 g-0 p-3">
+    <router-outlet></router-outlet>
+  </div>
+
+  <nav
+    class="sidebar offcanvas-start offcanvas-md position-absolute"
+    tabindex="-1"
+    id="sidebar"
+    data-bs-scroll="true"
+  >
+    <div
+      class="offcanvas-header border-bottom border-secondary border-opacity-25"
+    >
+      <a class="sidebar-brand">
+        <i class="bi bi-server" style="color: var(--bs-primary)"></i>
+        Node.js Media Server
+      </a>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="sidebar-nav">
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/status']">
+            <i class="bi bi-pc"></i>
+              Status
+          </a>
+        </li> -->
+
+        <li><hr class="sidebar-divider" /></li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLink]="['/image-groups']"
+          >
+            <i class="bi bi-collection-fill"></i>
+            Image groups
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/images']">
+            <i class="bi bi-images"></i>
+              Images
+          </a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <div class="fixed-bottom px-3">
+    <div
+      class="alert alert-success border-0 rounded-0 d-flex align-items-center"
+      role="alert"
+      *ngFor="let alert of alerts | async"
+    >
+      <i class="bi bi-check-circle text-success-emphasis me-2"></i>
+      <div [innerHTML]="alert.msg"></div>
+    </div>
+  </div>
+</div>

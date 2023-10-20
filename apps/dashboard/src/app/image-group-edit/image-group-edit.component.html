@@ -1,0 +1,32 @@
+<h2>Edit group</h2>
+
+<div class="card w-50 p-2 mt-3">
+    <form>
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" placeholder="Name" disabled [value]="group?.name"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label me-2">Variants</label>
+            <button class="btn btn-primary btn-sm" routerLink="add-variant">Add variant</button>
+
+            <table class="table align-middle">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col" class="text-end">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let variant of group?.variants">
+                    <td>{{variant}}</td>
+                    <td class="text-end"><button class="btn btn-sm btn-primary" [routerLink]="['edit-variant', variant]">Edit</button><button class="btn btn-sm btn-danger" (click)="deleteVariant(variant)">Delete</button></td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div> -->
+    </form>
+</div>

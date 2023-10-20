@@ -1,0 +1,29 @@
+<h2>Image groups</h2>
+
+<div class="card w-50 m-3">
+  <button class="btn btn-primary" routerLink="add">Add group</button>
+</div>
+
+<div class="card w-50 m-3">
+    <table class="table align-middle">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">No. variants</th>
+            <th scope="col" class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let group of groups">
+            <td>{{group.name}}</td>
+            <td>{{group.variants.length}}</td>
+            <td class="text-end"><button class="btn btn-sm btn-primary" [routerLink]="['edit', group.id]">Edit</button><button class="btn btn-sm btn-danger" (click)="deleteGroup(group.id)">Delete</button></td>
+          </tr>
+          <!-- <tr>
+            <td>article-header</td>
+            <td>5</td>
+            <td class="text-end"><button class="btn btn-primary">Edit</button></td>
+          </tr> -->
+        </tbody>
+    </table>
+</div>

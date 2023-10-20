@@ -1,0 +1,35 @@
+<h2 *ngIf="!isEditMode">Add variant</h2>
+<h2 *ngIf="isEditMode">Edit variant</h2>
+
+<div class="card w-50 p-3">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" placeholder="Name" formControlName="name"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fit</label>
+            <select class="form-control" formControlName="fit">
+                <option value="cover">Cover</option>
+                <option value="contain">Contain</option>
+                <option value="fill">Fill</option>
+                <option value="inside">Inside</option>
+                <option value="outside">Outside</option>
+            </select>
+        </div>
+        <div class="mb-3 d-flex gap-3">
+            <div class="">
+                <label class="form-label">Width</label>
+                <input type="number" class="form-control" placeholder="Width" formControlName="width"/>
+            </div>
+            <div class="">
+                <label class="form-label">Height</label>
+                <input type="number" class="form-control" placeholder="Height" formControlName="height"/>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" *ngIf="!isEditMode">Create</button>
+            <button type="submit" class="btn btn-primary" *ngIf="isEditMode" disabled>Update</button>
+        </div>
+    </form>
+</div>
