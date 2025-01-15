@@ -5,7 +5,8 @@
     "dev": "turbo run dev",
     "test": "turbo run test",
     "build": "turbo run build",
-    "build:image": "turbo prune --docker backend && docker image build --progress=plain . -f Dockerfile --tag node-media-storage"
+    "build:image": "turbo prune --docker backend && docker image build --progress=plain . -f Dockerfile --tag node-media-storage",
+    "turbo:prune:backend": "turbo prune --docker backend"
   },
   "workspaces": [
     "apps/*"
