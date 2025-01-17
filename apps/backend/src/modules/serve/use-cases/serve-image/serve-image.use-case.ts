@@ -23,7 +23,7 @@ export class ServeImageUseCase implements UseCase<ServeImageDto, ServeImageRespo
         }
 
         const groupId = image.group;
-        const group = await this.imageGroupRepo.getGroup(groupId);
+        const group = await this.imageGroupRepo.getGroupByName(groupId);
         if (!group) {
             throw new Error('group with given id not exist.');
         }

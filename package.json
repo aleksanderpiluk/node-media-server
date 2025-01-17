@@ -6,12 +6,18 @@
     "test": "turbo run test",
     "build": "turbo run build",
     "build:image": "turbo prune --docker backend && docker image build --progress=plain . -f Dockerfile --tag node-media-storage",
-    "turbo:prune:backend": "turbo prune --docker backend"
+    "turbo:prune:backend": "turbo prune --docker backend",
+    "microbenchmark": "tsx .microbenchmark/index.ts",
+    "stress_test": "artillery run .stress_tests/test1.yaml --output .stress_tests/report.json",
+    "stress_test:report": "artillery report .stress_tests/report.json --output .stress_tests/report.html"
   },
   "workspaces": [
     "apps/*"
   ],
   "devDependencies": {
+    "chalk": "^5.4.1",
+    "console-table-printer": "^2.12.1",
+    "tsx": "^4.19.2",
     "turbo": "^1.10.15"
   }
 }

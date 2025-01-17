@@ -41,6 +41,9 @@ WORKDIR /usr/src/app/apps/backend
 COPY .env .env
 COPY .env.production .env.production
 
+RUN mkdir /usr/storage
+RUN chown -R node:node /usr/storage
+
 USER node
 
 ENV NODE_ENV=production

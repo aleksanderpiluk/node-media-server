@@ -14,6 +14,14 @@ services:
     restart: unless-stopped
     volumes:
       - mongodb-data:/data/db
+  mongo_express:
+    image: mongo-express
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: db
+      ME_CONFIG_MONGODB_URL: mongodb://db:27017
 
 volumes:
   mongodb-data:

@@ -1,0 +1,43 @@
+config:
+  # This is a test server run by team Artillery
+  # It's designed to be highly scalable
+  target: http://localhost:3000
+  phases:
+    - duration: 20
+      arrivalRate: 1
+      rampTo: 5
+      name: Warm up phase
+    - duration: 30
+      arrivalRate: 5
+      rampTo: 10
+      name: Ramp up load
+    - duration: 30
+      arrivalRate: 10
+      rampTo: 30
+      name: Spike phase
+  # Load & configure a couple of useful plugins
+  # https://docs.art/reference/extensions
+  plugins:
+    ensure: {}
+    # apdex: {}
+    metrics-by-endpoint: {}
+  # apdex:
+  #   threshold: 100
+  ensure:
+    thresholds:
+      - http.response_time.p99: 500
+      - http.response_time.p95: 300
+scenarios:
+  - flow:
+      - loop:
+          # - get:
+          #     url: /serve/image/6789913fd171f19f2c34782d/avatar-sm
+          #     headers:
+          #       accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+          - get:
+              url: /dashboard/image-groups
+          - get:
+              url: /dashboard/image-groups/add
+          - get:
+              url: /dashboard/image-groups/edit/6789839e499b1e2d040e4428
+        count: 5
